@@ -1,4 +1,4 @@
-function result = prob1_2(time, step_size)
+function [result, abs_rel_err] = prob1_2(time, step_size)
     
     v_last = 0;
     analytical_sol = 41.137;
@@ -9,8 +9,10 @@ function result = prob1_2(time, step_size)
     end
     
     abs_rel_err = abs((analytical_sol - v_last)/analytical_sol)*100;
+    result = v_last;
     
     fprintf('Velocity = %.5f\n', v_last);
     fprintf('Absolute relative error for time = %d, step size = %.1f = %.5f%%\n', time, step_size, abs_rel_err);
     
+    % the smaller gets the step size, less error value we get and more accurate result 
 end
