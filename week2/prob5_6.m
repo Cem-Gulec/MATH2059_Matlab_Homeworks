@@ -1,17 +1,15 @@
-function result = prob5_4()
+function result = prob5_6()
     
     counter = 0;
-    xl = -1;
-    xu = 0;
-    f = @(x) -12 - 21*x + 18*power(x,2) - 2.75*power(x,3);
-    % since it can be figured out in the graph where the roots outlied
-    % we can easily detect them by giving a close value to approach
+    xl = 0.5;
+    xu = 2;
+    f = @(x) log(power(x,2)) - 0.7;
+    % defining roots for the function f
     f1 = fzero(f,-1);
     f2 = fzero(f, 1);
-    f3 = fzero(f, 4);
-    fprintf('root1: %.5f root2: %.5f root3: %.5f\n', f1,f2,f3);
+    fprintf('root1: %.5f root2: %.5f\n', f1,f2);
     
-    % plotting the function
+    % plotting the graph according to defined function
     figure(1)
     fplot(f, [-3,5], 'g')
     x_line = xlim;
@@ -19,11 +17,12 @@ function result = prob5_4()
     line([0 0], y_line);  % y-axis
     line(x_line, [0 0]);  % x-axis
     hold on
-    plot([f1,f2,f3], [0,0,0], '*r') % plotting root points
+    plot([f1,f2], [0,0], '*r') % plotting root points
+    
     
     % bisection method implementation
     fprintf('\n***bisection method***\n');
-    while(1)
+    for i = 1:3
         f_xl = f(xl);
         f_xu = f(xu);
         xr = (xl+xu)/2;
@@ -44,7 +43,6 @@ function result = prob5_4()
             xl = xr;
         end
         
-        % iteration number
         counter = counter + 1;
         % stopping criterian
         if ea < 1 
@@ -56,20 +54,23 @@ function result = prob5_4()
     fprintf('approximate error: %%%.8f\n', ea);
     fprintf('approximate root: %.5f\n\n', xr);
     
+    
     % false position method implementation
     fprintf('***false position method***\n');
     counter = 0;
     state_counter = 0;
     xl_old = -1;
-    xl = -1;
-    xu = 0;
+    xl = 0.5;
+    xu = 2;
     f_xl = f(xl);
     
-    while(1)
+    for i = 1:3
         if xl == xl_old
             state_counter = state_counter + 1;
         end
         
+        % if either xl or xu repeats more than 2 times
+        % it needs to be halved
         if state_counter == 3
             f_xl = f_xl / 2;
         end
@@ -100,7 +101,5 @@ function result = prob5_4()
     fprintf('number of iterations: %d\n', counter);
     fprintf('approximate error: %%%.8f\n', ea);
     fprintf('approximate root: %.5f\n\n', xr);
-    
-    
     
 end
