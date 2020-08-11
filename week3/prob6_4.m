@@ -20,45 +20,46 @@ function result = prob6_4()
     % newton-raphson method implementation
     root_1_init = 0;
     root_2_init = 1;
-    root_3_init = 6
+    root_3_init = 6;
     
-    root_der = diff(f(x)) % derivative of the function
+    root_der = diff(f(x)); % derivative of the function
     
     % for the first root
+    fprintf('\nNewton-raphson method\n\nimplementation for the first root\n');
     while(1)
         
-        x_val = root_1_init - f(root_1_init)/double(subs(root_der, root_1_init))
+        x_val = root_1_init - f(root_1_init)/double(subs(root_der, root_1_init));
         approx_err = (x_val - root_1_init) / x_val;
         root_1_init = x_val;
         
         fprintf('x_val: %.8f approx_err: %.8f\n', x_val, approx_err);
-        if abs(approx_err) < 0.01 break, end
+        if abs(approx_err) < 0.0001 break, end
         
     end
     
     % for the second root
-    fprintf('\n\n');
+    fprintf('\nimplementation for the second root\n');
     while(1)
         
-        x_val = root_2_init - f(root_2_init)/double(subs(root_der, root_2_init))
+        x_val = root_2_init - f(root_2_init)/double(subs(root_der, root_2_init));
         approx_err = (x_val - root_2_init) / x_val;
         root_2_init = x_val;
         
         fprintf('x_val: %.8f approx_err: %.8f\n', x_val, approx_err);
-        if abs(approx_err) < 0.01 break, end
+        if abs(approx_err) < 0.0001 break, end
         
     end
     
     % for the third root
-    fprintf('\n\n');
+    fprintf('\nimplementation for the third root\n');
     while(1)
         
-        x_val = root_3_init - f(root_3_init)/double(subs(root_der, root_3_init))
+        x_val = root_3_init - f(root_3_init)/double(subs(root_der, root_3_init));
         approx_err = (x_val - root_3_init) / x_val;
         root_3_init = x_val;
         
         fprintf('x_val: %.8f approx_err: %.8f\n', x_val, approx_err);
-        if abs(approx_err) < 0.01 break, end
+        if abs(approx_err) < 0.0001 break, end
         
     end
     
