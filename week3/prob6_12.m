@@ -35,10 +35,19 @@ function result = prob6_12()
         
     end
     
-    
-    
     fprintf('\n\nfinalized root values for newton-raphson method with 5%% stopping criteria\n');
     fprintf('x2: %.8ff', root_2_init);
+    
+    
+    % The reason why i chose the Newton-Raphson method is that:
+    % I assumed that bracketing method might require more iterations
+    % comparing to other methods, since it will converge slowly.
+    
+    % Secant method is also would not be very efficient comparing to Newton-Raphson since we can easily
+    % calculate derivative of our equation and avoid unnecessary evaluations.
+    
+    % In the end, I think that Newton-Raphson acts as the best choice among
+    % those algorithms.
     
 
 end
